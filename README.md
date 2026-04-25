@@ -43,7 +43,7 @@ Welcome to my AI Internship repository with **YoungDevInterns**. This project tr
 * **Outcome:** Optimized model performance beyond default settings.
 ask 1: Advanced Model Optimization
 Goal: Optimize a complex model using automated hyperparameter tuning.
-
+#Expert Task
 Model: Random Forest / Gradient Boosting.
 
 Methodology: Implemented RandomizedSearchCV to navigate a high-dimensional parameter space (including n_estimators, max_depth, and min_samples_split).
