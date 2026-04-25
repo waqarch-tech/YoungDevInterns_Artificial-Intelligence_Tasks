@@ -41,7 +41,42 @@ Welcome to my AI Internship repository with **YoungDevInterns**. This project tr
 * **Goal:** Find the "perfect" settings for a Machine Learning model.
 * **Implementation:** Used `GridSearchCV` to automatically test hundreds of combinations of parameters (like `n_estimators` and `max_depth`).
 * **Outcome:** Optimized model performance beyond default settings.
+ask 1: Advanced Model Optimization
+Goal: Optimize a complex model using automated hyperparameter tuning.
 
+Model: Random Forest / Gradient Boosting.
+
+Methodology: Implemented RandomizedSearchCV to navigate a high-dimensional parameter space (including n_estimators, max_depth, and min_samples_split).
+
+Outcome: Achieved a significant uplift in model performance by identifying the optimal balance between bias and variance, ensuring the model generalizes well to unseen data.
+
+Task 2: Deep Learning Implementation (CNN)
+Goal: Design and train a Convolutional Neural Network (CNN) for image classification.
+
+Architecture: Built a multi-layer CNN using the Keras Functional API/Sequential model.
+
+Optimization Techniques:
+
+Batch Normalization: Applied to stabilize the learning process and reduce training time.
+
+Dropout: Integrated (0.2–0.5 rate) to prevent overfitting by deactivating random neurons during training.
+
+Dataset: Trained on the CIFAR-10 dataset (32x32 color images).
+
+Result: Attained high validation accuracy, demonstrating the network's ability to extract spatial hierarchies from raw pixel data.
+
+Task 3: Model Deployment as a Web Service
+Goal: Deploy the trained model to a live web API.
+
+Framework: FastAPI — chosen for its high performance and native support for asynchronous requests.
+
+Server: Uvicorn serving as the ASGI implementation.
+
+Deployment Strategy: * The model was serialized as a .keras file.
+
+Exposed via a public URL using Localtunnel to simulate a cloud-hosting environment (AWS/GCP).
+
+Features a /predict endpoint that accepts image uploads, performs real-time preprocessing, and returns class predictions in JSON format.
 ---
 
 ## 🛠️ Tech Stack
