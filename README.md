@@ -1,95 +1,82 @@
-# YoungDevInterns_Artificial Intelligence_Tasks
+🟢 Phase 1: Basic Tasks (Foundations)
+Focus: Data handling, exploratory analysis, and baseline modeling.
 
-Welcome to my AI Internship repository with **YoungDevInterns**. This project tracks my progress through foundational and advanced AI/ML concepts, from UI design to complex model evaluation.
+1. Data Cleaning & Preprocessing
+Objective: Prepare a raw dataset for machine learning.
 
----
+Techniques: Handled missing values using mean/median imputation, encoded categorical variables using One-Hot Encoding, and scaled numerical features using StandardScaler.
 
-## 🟢 Basic Tasks (Level 1)
+Result: A clean, balanced dataset ready for algorithmic processing.
 
-### Task 1: Responsive UI Design (Figma)
-* **Goal:** Create a webpage interface that adapts to Desktop, Tablet, and Mobile.
-* **Key Features:** Used **Auto-Layout** for flexible containers and **Constraints** for element positioning.
-* **Outcome:** A prototype that maintains visual hierarchy across all device types.
+2. Exploratory Data Analysis (EDA)
+Objective: Extract insights and identify patterns through visualization.
 
-### Task 2: Data Preprocessing Pipeline
-* **Goal:** Transform raw, "messy" data into a model-ready format.
-* **Techniques:** * Imputation of missing values.
-    * Feature scaling using `StandardScaler`.
-    * Categorical encoding (Label/One-Hot).
-* **Outcome:** Cleaned datasets with an 80/20 train-test split.
+Tools: Used Seaborn and Matplotlib to generate correlation heatmaps, distribution plots, and outliers detection.
 
-### Task 3: K-Fold Cross-Validation
-* **Goal:** Robustly evaluate model performance.
-* **Implementation:** Applied 5-Fold CV on a Random Forest Classifier.
-* **Metrics:** Tracked Accuracy, Precision, Recall, and F1-Score to ensure generalization.
+Insight: Identified key feature correlations that directly influenced model selection.
 
----
+3. Baseline Linear Regression
+Objective: Implement a simple predictive model.
 
-## 🟡 Intermediate Tasks (Level 2)
+Outcome: Built a regression model to predict continuous values, establishing a benchmark metric (MSE/R-Squared) to measure future model improvements.
 
-### Task 4: Advanced Neural Network Architecture
-* **Goal:** Build a multi-layer Perceptron (MLP) for complex pattern recognition.
-* **Key Features:** Implementation of **Hidden Layers**, **Dropout** (for overfitting prevention), and **Activation Functions** like ReLU and Softmax.
-* **Outcome:** Improved classification accuracy on non-linear datasets.
+🟡 Phase 2: Intermediate Tasks (Complexity)
+Focus: Ensemble methods, feature engineering, and performance evaluation.
 
-### Task 5: Feature Engineering & Selection
-* **Goal:** Improve model accuracy by selecting the most impactful data features.
-* **Techniques:** Used **Correlation Matrices** and **Principal Component Analysis (PCA)** to reduce dimensionality while retaining variance.
-* **Outcome:** Reduced model training time and increased predictive power.
+4. Advanced Classification (Random Forest)
+Objective: Move beyond linear models to non-linear ensemble methods.
 
-### Task 6: Hyperparameter Tuning (GridSearch)
-* **Goal:** Find the "perfect" settings for a Machine Learning model.
-* **Implementation:** Used `GridSearchCV` to automatically test hundreds of combinations of parameters (like `n_estimators` and `max_depth`).
-* **Outcome:** Optimized model performance beyond default settings.
-ask 1: Advanced Model Optimization
-Goal: Optimize a complex model using automated hyperparameter tuning.
-#Expert Task
-Model: Random Forest / Gradient Boosting.
+Details: Implemented a Random Forest Classifier to handle complex data relationships and provide feature importance rankings.
 
-Methodology: Implemented RandomizedSearchCV to navigate a high-dimensional parameter space (including n_estimators, max_depth, and min_samples_split).
+5. Model Evaluation & Metrics
+Objective: Move beyond simple "Accuracy" to deeper validation.
 
-Outcome: Achieved a significant uplift in model performance by identifying the optimal balance between bias and variance, ensuring the model generalizes well to unseen data.
+Details: Generated Confusion Matrices, Precision-Recall curves, and F1-Scores to evaluate model performance on imbalanced classes.
 
-Task 2: Deep Learning Implementation (CNN)
-Goal: Design and train a Convolutional Neural Network (CNN) for image classification.
+6. Pipeline Automation
+Objective: Streamline the ML workflow.
 
-Architecture: Built a multi-layer CNN using the Keras Functional API/Sequential model.
+Details: Created a Scikit-Learn Pipeline to bundle preprocessing and modeling into a single object, preventing data leakage during cross-validation.
 
-Optimization Techniques:
+🔴 Phase 3: Expert Tasks (Architecture & MLOps)
+Focus: Deep Learning, Hyperparameter Optimization, and Deployment.
 
-Batch Normalization: Applied to stabilize the learning process and reduce training time.
+7. Hyperparameter Tuning (Task 1)
+Objective: Optimize a complex model to its theoretical limit.
 
-Dropout: Integrated (0.2–0.5 rate) to prevent overfitting by deactivating random neurons during training.
+Method: Used RandomizedSearchCV to fine-tune a Gradient Boosting/Random Forest model.
 
-Dataset: Trained on the CIFAR-10 dataset (32x32 color images).
+Key Tuning: Optimized n_estimators, max_depth, and min_samples_split.
 
-Result: Attained high validation accuracy, demonstrating the network's ability to extract spatial hierarchies from raw pixel data.
+8. Deep Learning CNN (Task 2)
+Objective: Implement a high-performance image classifier.
 
-Task 3: Model Deployment as a Web Service
-Goal: Deploy the trained model to a live web API.
+Architecture: Custom Convolutional Neural Network (CNN) with:
 
-Framework: FastAPI — chosen for its high performance and native support for asynchronous requests.
+Batch Normalization: For faster training stability.
 
-Server: Uvicorn serving as the ASGI implementation.
+Dropout (0.3): To prevent overfitting.
 
-Deployment Strategy: * The model was serialized as a .keras file.
+Dataset: CIFAR-10 image classification.
 
-Exposed via a public URL using Localtunnel to simulate a cloud-hosting environment (AWS/GCP).
+9. Model Deployment (Task 3)
+Objective: Deploy the model as a live production API.
 
-Features a /predict endpoint that accepts image uploads, performs real-time preprocessing, and returns class predictions in JSON format.
----
+Technology: FastAPI + Uvicorn + Localtunnel.
 
-## 🛠️ Tech Stack
-* **Programming:** Python 3.10+
-* **Libraries:** Scikit-Learn, NumPy, Pandas, Matplotlib, Seaborn
-* **Tools:** Google Colab, Figma, GitHub
+Features:
 
----
+RESTful /predict endpoint.
 
-## 👤 Connect & Submit
-* **LinkedIn:** [Insert Your Profile Link]
-* **Facebook:** [Insert Your Profile Link]
-* **Internship Provider:** [YoungDevInterns](https://www.linkedin.com/company/youngdevinterns/)
+Real-time image preprocessing.
 
----
-*Submitted as part of the YoungDevInterns AI Internship Program.*
+Publicly accessible URL with a secure tunnel password.
+
+🛠️ Technology Stack
+Core: Python 3.12, NumPy, Pandas
+
+ML/DL: Scikit-Learn, TensorFlow, Keras
+
+Visualization: Matplotlib, Seaborn
+
+API/MLOps: FastAPI, Uvicorn, Localtunnel
