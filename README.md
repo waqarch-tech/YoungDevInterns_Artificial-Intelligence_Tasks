@@ -1,48 +1,60 @@
 # YoungDevInterns_Artificial Intelligence_Tasks
 
-Welcome to my project repository for the **YoungDevInterns Artificial Intelligence Internship**. This repository serves as a portfolio of the tasks completed during the program.
+Welcome to my AI Internship repository with **YoungDevInterns**. This project tracks my progress through foundational and advanced AI/ML concepts, from UI design to complex model evaluation.
 
 ---
 
-## 📂 Internship Tasks
+## 🟢 Basic Tasks (Level 1)
 
-### 🧠 Task 1: Neural Network & Responsive UI Design
-* **Objective:** Design a responsive interface that adapts to various screen dimensions.
-* **Implementation:** * Utilized **Figma Constraints** to pin elements to specific frame edges.
-    * Implemented **Auto-layout** for dynamic button resizing and list stacking.
-    * Created breakpoints for **Mobile, Tablet, and Desktop** views to ensure a seamless user experience.
-* **Tools:** Figma.
+### Task 1: Responsive UI Design (Figma)
+* **Goal:** Create a webpage interface that adapts to Desktop, Tablet, and Mobile.
+* **Key Features:** Used **Auto-Layout** for flexible containers and **Constraints** for element positioning.
+* **Outcome:** A prototype that maintains visual hierarchy across all device types.
 
-### 🧹 Task 2: Data Preprocessing for Machine Learning
-* **Objective:** Transform raw data into a format suitable for model training.
-* **Implementation:**
-    * **Data Cleaning:** Handled missing values using mean/median imputation.
-    * **Normalization:** Applied `StandardScaler` to bring numerical features to a common scale.
-    * **Encoding:** Used One-Hot Encoding for categorical variables.
-    * **Splitting:** Divided the dataset into training (80%) and testing (20%) sets.
-* **Tools:** Python, Pandas, Scikit-Learn.
+### Task 2: Data Preprocessing Pipeline
+* **Goal:** Transform raw, "messy" data into a model-ready format.
+* **Techniques:** * Imputation of missing values.
+    * Feature scaling using `StandardScaler`.
+    * Categorical encoding (Label/One-Hot).
+* **Outcome:** Cleaned datasets with an 80/20 train-test split.
 
-### 📊 Task 3: Model Training with K-Fold Cross-Validation
-* **Objective:** Evaluate model reliability using robust statistical validation.
-* **Implementation:**
-    * **Model:** Random Forest Classifier ($100$ estimators).
-    * **Strategy:** 5-Fold Cross-Validation using `KFold` with data shuffling.
-    * **Metrics:** Calculated mean and standard deviation for **Accuracy, Precision, Recall, and F1-Score**.
-    * **Result:** Verified the model's ability to generalize to unseen data without overfitting.
-* **Tools:** Python, Scikit-Learn, NumPy, Google Colab.
+### Task 3: K-Fold Cross-Validation
+* **Goal:** Robustly evaluate model performance.
+* **Implementation:** Applied 5-Fold CV on a Random Forest Classifier.
+* **Metrics:** Tracked Accuracy, Precision, Recall, and F1-Score to ensure generalization.
+
+---
+
+## 🟡 Intermediate Tasks (Level 2)
+
+### Task 4: Advanced Neural Network Architecture
+* **Goal:** Build a multi-layer Perceptron (MLP) for complex pattern recognition.
+* **Key Features:** Implementation of **Hidden Layers**, **Dropout** (for overfitting prevention), and **Activation Functions** like ReLU and Softmax.
+* **Outcome:** Improved classification accuracy on non-linear datasets.
+
+### Task 5: Feature Engineering & Selection
+* **Goal:** Improve model accuracy by selecting the most impactful data features.
+* **Techniques:** Used **Correlation Matrices** and **Principal Component Analysis (PCA)** to reduce dimensionality while retaining variance.
+* **Outcome:** Reduced model training time and increased predictive power.
+
+### Task 6: Hyperparameter Tuning (GridSearch)
+* **Goal:** Find the "perfect" settings for a Machine Learning model.
+* **Implementation:** Used `GridSearchCV` to automatically test hundreds of combinations of parameters (like `n_estimators` and `max_depth`).
+* **Outcome:** Optimized model performance beyond default settings.
 
 ---
 
 ## 🛠️ Tech Stack
-* **Languages:** Python 3.x
-* **Libraries:** NumPy, Pandas, Scikit-Learn, Matplotlib
-* **Platform:** Google Colab / Jupyter Notebooks
-* **Design:** Figma
+* **Programming:** Python 3.10+
+* **Libraries:** Scikit-Learn, NumPy, Pandas, Matplotlib, Seaborn
+* **Tools:** Google Colab, Figma, GitHub
 
 ---
 
-## 🔗 Connect with Me
-* **LinkedIn:** [Your LinkedIn Profile Link Here]
-* **Facebook:** [Your Facebook Profile Link Here]
+## 👤 Connect & Submit
+* **LinkedIn:** [Insert Your Profile Link]
+* **Facebook:** [Insert Your Profile Link]
+* **Internship Provider:** [YoungDevInterns](https://www.linkedin.com/company/youngdevinterns/)
 
-**Company:** [YoungDevInterns](https://www.linkedin.com/company/youngdevinterns/)
+---
+*Submitted as part of the YoungDevInterns AI Internship Program.*
