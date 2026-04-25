@@ -260,7 +260,7 @@
         "id": "Z8UYd0C0ScFn",
         "outputId": "def2a00b-085b-4b2a-db89-12136a0887b0"
       },
-      "execution_count": null,
+      "execution_count": 1,
       "outputs": [
         {
           "output_type": "stream",
@@ -294,7 +294,8 @@
             "==============================\n",
             "your url is: https://violet-apes-beam.loca.lt\n",
             "INFO:     149.40.209.14:0 - \"GET /favicon.ico HTTP/1.1\" 404 Not Found\n",
-            "INFO:     149.40.209.14:0 - \"GET / HTTP/1.1\" 200 OK\n"
+            "INFO:     149.40.209.14:0 - \"GET / HTTP/1.1\" 200 OK\n",
+            "^C\n"
           ]
         }
       ]
