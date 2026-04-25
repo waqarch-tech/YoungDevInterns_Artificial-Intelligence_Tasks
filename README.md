@@ -24,7 +24,17 @@ This repository contains the tasks completed during my Artificial Intelligence I
 - **Analysis:** Calculated Mean, Median, and Standard Deviation using `pandas`.
 - **Visualization:** Created Histograms with KDE (Kernel Density Estimate) to understand feature spread.
 - **Key Outcome:** Gained insights into data central tendency and variance.
+# Iris Flower Classification 🌸
 
+A simple machine learning model to classify iris flower species using Logistic Regression.
+
+## Project Overview
+This project uses the famous **Iris Dataset** to predict whether a flower is a *Setosa*, *Versicolor*, or *Virginica* based on its physical measurements.
+
+## Installation
+Clone the repository and install the dependencies:
+```bash
+pip install pandas scikit-learn
 ---
 
 ## 🛠️ Tools & Technologies
