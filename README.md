@@ -1,50 +1,48 @@
-# YoungDevInterns_Artificial-Intelligence_Tasks
-# AI Internship Tasks
-# YoungDevInterns_Artificial-Intelligence_Tasks
+# YoungDevInterns_Artificial Intelligence_Tasks
 
-This repository contains the tasks completed during my Artificial Intelligence Internship at **YoungDevInterns**. Each task focuses on core machine learning and data science concepts using Python.
+Welcome to my project repository for the **YoungDevInterns Artificial Intelligence Internship**. This repository serves as a portfolio of the tasks completed during the program.
 
 ---
 
-## 🚀 Task 1: Simple Linear Regression
-**Goal:** Implement a basic linear regression model to predict a target variable based on one feature.
+## 📂 Internship Tasks
 
-### Details:
-- **Dataset:** Synthetic dataset representing Salary vs. Years of Experience.
-- **Libraries:** `scikit-learn`, `numpy`, `matplotlib`.
-- **Key Outcome:** Successfully trained the model and visualized the regression line against actual data points.
+### 🧠 Task 1: Neural Network & Responsive UI Design
+* **Objective:** Design a responsive interface that adapts to various screen dimensions.
+* **Implementation:** * Utilized **Figma Constraints** to pin elements to specific frame edges.
+    * Implemented **Auto-layout** for dynamic button resizing and list stacking.
+    * Created breakpoints for **Mobile, Tablet, and Desktop** views to ensure a seamless user experience.
+* **Tools:** Figma.
 
----
+### 🧹 Task 2: Data Preprocessing for Machine Learning
+* **Objective:** Transform raw data into a format suitable for model training.
+* **Implementation:**
+    * **Data Cleaning:** Handled missing values using mean/median imputation.
+    * **Normalization:** Applied `StandardScaler` to bring numerical features to a common scale.
+    * **Encoding:** Used One-Hot Encoding for categorical variables.
+    * **Splitting:** Divided the dataset into training (80%) and testing (20%) sets.
+* **Tools:** Python, Pandas, Scikit-Learn.
 
-## 📊 Task 2: Data Exploration & Basic Statistics
-**Goal:** Analyze a dataset using descriptive statistics and visualize distributions.
-
-### Details:
-- **Dataset:** The "Iris" dataset (loaded via Seaborn).
-- **Analysis:** Calculated Mean, Median, and Standard Deviation using `pandas`.
-- **Visualization:** Created Histograms with KDE (Kernel Density Estimate) to understand feature spread.
-- **Key Outcome:** Gained insights into data central tendency and variance.
-# Iris Flower Classification 🌸
-
-A simple machine learning model to classify iris flower species using Logistic Regression.
-
-## Project Overview
-This project uses the famous **Iris Dataset** to predict whether a flower is a *Setosa*, *Versicolor*, or *Virginica* based on its physical measurements.
-
-## Installation
-Clone the repository and install the dependencies:
-```bash
-pip install pandas scikit-learn
----
-
-## 🛠️ Tools & Technologies
-- **Language:** Python
-- **Environment:** Google Colab
-- **Libraries:** Pandas, NumPy, Scikit-Learn, Seaborn, Matplotlib
+### 📊 Task 3: Model Training with K-Fold Cross-Validation
+* **Objective:** Evaluate model reliability using robust statistical validation.
+* **Implementation:**
+    * **Model:** Random Forest Classifier ($100$ estimators).
+    * **Strategy:** 5-Fold Cross-Validation using `KFold` with data shuffling.
+    * **Metrics:** Calculated mean and standard deviation for **Accuracy, Precision, Recall, and F1-Score**.
+    * **Result:** Verified the model's ability to generalize to unseen data without overfitting.
+* **Tools:** Python, Scikit-Learn, NumPy, Google Colab.
 
 ---
 
-## 👨‍💻 How to Run
-1. Open any `.ipynb` file in this repository.
-2. Click the "Open in Colab" badge (if applicable) or download the file and upload it to [Google Colab](https://colab.research.google.com/).
-3. Run the cells sequentially.
+## 🛠️ Tech Stack
+* **Languages:** Python 3.x
+* **Libraries:** NumPy, Pandas, Scikit-Learn, Matplotlib
+* **Platform:** Google Colab / Jupyter Notebooks
+* **Design:** Figma
+
+---
+
+## 🔗 Connect with Me
+* **LinkedIn:** [Your LinkedIn Profile Link Here]
+* **Facebook:** [Your Facebook Profile Link Here]
+
+**Company:** [YoungDevInterns](https://www.linkedin.com/company/youngdevinterns/)
