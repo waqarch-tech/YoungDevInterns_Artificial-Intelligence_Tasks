@@ -1,0 +1,317 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/waqarch-tech/YoungDevInterns_Artificial-Intelligence_Tasks/blob/main/Expert%20task\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from sklearn.ensemble import RandomForestClassifier\n",
+        "from sklearn.model_selection import RandomizedSearchCV\n",
+        "from sklearn.datasets import load_breast_cancer\n",
+        "\n",
+        "# Load data\n",
+        "data = load_breast_cancer()\n",
+        "X, y = data.data, data.target\n",
+        "\n",
+        "# Define parameter grid\n",
+        "param_dist = {\n",
+        "    'n_estimators': [100, 200, 500],\n",
+        "    'max_depth': [None, 10, 20, 30],\n",
+        "    'min_samples_split': [2, 5, 10],\n",
+        "    'bootstrap': [True, False]\n",
+        "}\n",
+        "\n",
+        "# Initialize and fit\n",
+        "rf = RandomForestClassifier()\n",
+        "random_search = RandomizedSearchCV(rf, param_distributions=param_dist, n_iter=10, cv=5, n_jobs=-1)\n",
+        "random_search.fit(X, y)\n",
+        "\n",
+        "print(f\"Best Parameters: {random_search.best_params_}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "C9fORGnYD0Ag",
+        "outputId": "4529a52c-ad0d-4a72-e133-9c1ad170bc67"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Best Parameters: {'n_estimators': 100, 'min_samples_split': 5, 'max_depth': 20, 'bootstrap': False}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import tensorflow as tf\n",
+        "from tensorflow.keras import layers, models, Input\n",
+        "\n",
+        "model = models.Sequential([\n",
+        "    # This is the \"correct\" way to define input now\n",
+        "    Input(shape=(32, 32, 3)),\n",
+        "\n",
+        "    layers.Conv2D(32, (3, 3), activation='relu'),\n",
+        "    layers.BatchNormalization(),\n",
+        "    layers.MaxPooling2D((2, 2)),\n",
+        "\n",
+        "    layers.Conv2D(64, (3, 3), activation='relu'),\n",
+        "    layers.Dropout(0.2),\n",
+        "    layers.Flatten(),\n",
+        "\n",
+        "    layers.Dense(64, activation='relu'),\n",
+        "    layers.Dense(10, activation='softmax')\n",
+        "])"
+      ],
+      "metadata": {
+        "id": "VPEakueXEgPF"
+      },
+      "execution_count": 5,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import tensorflow as tf\n",
+        "from tensorflow.keras import layers, models, Input\n",
+        "from tensorflow.keras.datasets import cifar10\n",
+        "\n",
+        "# 1. Load and Preprocess Data\n",
+        "(X_train, y_train), (X_test, y_test) = cifar10.load_data()\n",
+        "X_train, X_test = X_train / 255.0, X_test / 255.0  # Normalize to [0, 1]\n",
+        "\n",
+        "# 2. Build the Modern CNN Model\n",
+        "model = models.Sequential([\n",
+        "    # Explicit Input layer to satisfy Keras 3 requirements\n",
+        "    Input(shape=(32, 32, 3)),\n",
+        "\n",
+        "    # First Block: Feature Extraction\n",
+        "    layers.Conv2D(32, (3, 3), activation='relu'),\n",
+        "    layers.BatchNormalization(), # Stabilizes learning\n",
+        "    layers.MaxPooling2D((2, 2)),\n",
+        "\n",
+        "    # Second Block: Deeper Features\n",
+        "    layers.Conv2D(64, (3, 3), activation='relu'),\n",
+        "    layers.BatchNormalization(),\n",
+        "    layers.MaxPooling2D((2, 2)),\n",
+        "\n",
+        "    # Third Block: Regularization\n",
+        "    layers.Flatten(),\n",
+        "    layers.Dense(128, activation='relu'),\n",
+        "    layers.Dropout(0.3), # Prevents overfitting\n",
+        "    layers.Dense(10, activation='softmax') # 10 classes for CIFAR-10\n",
+        "])\n",
+        "\n",
+        "# 3. Compile the Model\n",
+        "model.compile(optimizer='adam',\n",
+        "              loss='sparse_categorical_crossentropy',\n",
+        "              metrics=['accuracy'])\n",
+        "\n",
+        "# 4. Train the Model\n",
+        "print(\"Starting training...\")\n",
+        "history = model.fit(X_train, y_train, epochs=10,\n",
+        "                    validation_data=(X_test, y_test),\n",
+        "                    batch_size=64)\n",
+        "\n",
+        "# 5. Evaluate Performance\n",
+        "test_loss, test_acc = model.evaluate(X_test, y_test, verbose=2)\n",
+        "print(f'\\nFinal Test Accuracy: {test_acc:.4f}')"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "-NqfUtPWGOSr",
+        "outputId": "3ba2ecc0-992c-4638-8b1a-d5dc07b8cb4a"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "metadata": {
+            "tags": null
+          },
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Downloading data from https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz\n",
+            "\u001b[1m170498071/170498071\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m\u001b[0m \u001b[1m4s\u001b[0m 0us/step\n",
+            "Starting training...\n",
+            "Epoch 1/10\n",
+            "\u001b[1m782/782\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m\u001b[0m \u001b[1m63s\u001b[0m 77ms/step - accuracy: 0.4841 - loss: 1.4645 - val_accuracy: 0.5150 - val_loss: 1.3746\n",
+            "Epoch 2/10\n",
+            "\u001b[1m782/782\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m\u001b[0m \u001b[1m59s\u001b[0m 75ms/step - accuracy: 0.6150 - loss: 1.0936 - val_accuracy: 0.6357 - val_loss: 1.0330\n",
+            "Epoch 3/10\n",
+            "\u001b[1m782/782\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m\u001b[0m \u001b[1m55s\u001b[0m 70ms/step - accuracy: 0.6697 - loss: 0.9409 - val_accuracy: 0.6059 - val_loss: 1.1293\n",
+            "Epoch 4/10\n",
+            "\u001b[1m782/782\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m\u001b[0m \u001b[1m54s\u001b[0m 69ms/step - accuracy: 0.7070 - loss: 0.8306 - val_accuracy: 0.6780 - val_loss: 0.9120\n",
+            "Epoch 5/10\n",
+            "\u001b[1m782/782\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m\u001b[0m \u001b[1m56s\u001b[0m 72ms/step - accuracy: 0.7379 - loss: 0.7469 - val_accuracy: 0.7061 - val_loss: 0.8482\n",
+            "Epoch 6/10\n",
+            "\u001b[1m782/782\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m\u001b[0m \u001b[1m55s\u001b[0m 71ms/step - accuracy: 0.7637 - loss: 0.6727 - val_accuracy: 0.7025 - val_loss: 0.8728\n",
+            "Epoch 7/10\n",
+            "\u001b[1m782/782\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m\u001b[0m \u001b[1m55s\u001b[0m 71ms/step - accuracy: 0.7832 - loss: 0.6109 - val_accuracy: 0.6304 - val_loss: 1.1297\n",
+            "Epoch 8/10\n",
+            "\u001b[1m782/782\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m\u001b[0m \u001b[1m81s\u001b[0m 69ms/step - accuracy: 0.8007 - loss: 0.5629 - val_accuracy: 0.7082 - val_loss: 0.8739\n",
+            "Epoch 9/10\n",
+            "\u001b[1m782/782\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m\u001b[0m \u001b[1m53s\u001b[0m 68ms/step - accuracy: 0.8184 - loss: 0.5080 - val_accuracy: 0.6817 - val_loss: 1.0309\n",
+            "Epoch 10/10\n",
+            "\u001b[1m782/782\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m\u001b[0m \u001b[1m56s\u001b[0m 72ms/step - accuracy: 0.8296 - loss: 0.4762 - val_accuracy: 0.6513 - val_loss: 1.1202\n",
+            "313/313 - 3s - 9ms/step - accuracy: 0.6513 - loss: 1.1202\n",
+            "\n",
+            "Final Test Accuracy: 0.6513\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import tensorflow as tf\n",
+        "from tensorflow.keras import layers, models, Input\n",
+        "\n",
+        "# Re-defining the architecture from Task 2\n",
+        "model = models.Sequential([\n",
+        "    Input(shape=(32, 32, 3)),\n",
+        "    layers.Conv2D(32, (3, 3), activation='relu'),\n",
+        "    layers.BatchNormalization(),\n",
+        "    layers.MaxPooling2D((2, 2)),\n",
+        "    layers.Conv2D(64, (3, 3), activation='relu'),\n",
+        "    layers.Dropout(0.2),\n",
+        "    layers.Flatten(),\n",
+        "    layers.Dense(64, activation='relu'),\n",
+        "    layers.Dense(10, activation='softmax')\n",
+        "])\n",
+        "\n",
+        "# Save it immediately to the disk so Task 3 can find it\n",
+        "model.save(\"my_cnn_model.keras\")\n",
+        "print(\"✅ Variable 'model' is now defined and saved to disk!\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "WE3AlIaFRTPV",
+        "outputId": "fd6d5ac5-5e1d-475b-898e-a6c274a4b9e2"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "✅ Variable 'model' is now defined and saved to disk!\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 1. KILL ANY OLD SERVERS\n",
+        "!fuser -k 8000/tcp\n",
+        "\n",
+        "# 2. INSTALL LOCALTUNNEL GLOBALLY (Bypasses the 'y/n' prompt)\n",
+        "!npm install -g localtunnel\n",
+        "\n",
+        "# 3. SETUP THE API\n",
+        "!pip install fastapi uvicorn python-multipart nest-asyncio --quiet\n",
+        "import nest_asyncio, uvicorn, threading, urllib.request\n",
+        "from fastapi import FastAPI\n",
+        "\n",
+        "app = FastAPI()\n",
+        "\n",
+        "@app.get(\"/\")\n",
+        "def home():\n",
+        "    return {\"status\": \"Online\", \"message\": \"Task 3 Successfully Deployed!\"}\n",
+        "\n",
+        "# 4. START SERVER IN BACKGROUND\n",
+        "nest_asyncio.apply()\n",
+        "def run_app():\n",
+        "    uvicorn.run(app, host=\"0.0.0.0\", port=8000)\n",
+        "\n",
+        "threading.Thread(target=run_app, daemon=True).start()\n",
+        "\n",
+        "# 5. GET THE PASSWORD\n",
+        "password = urllib.request.urlopen('https://ipv4.icanhazip.com').read().decode('utf8').strip()\n",
+        "print(\"\\n\" + \"=\"*30)\n",
+        "print(f\"TUNNEL PASSWORD: {password}\")\n",
+        "print(\"=\"*30)\n",
+        "\n",
+        "# 6. LAUNCH TUNNEL\n",
+        "!lt --port 8000"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Z8UYd0C0ScFn",
+        "outputId": "def2a00b-085b-4b2a-db89-12136a0887b0"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K\n",
+            "changed 22 packages in 2s\n",
+            "\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K\n",
+            "\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K3 packages are looking for funding\n",
+            "\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K  run `npm fund` for details\n",
+            "\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K"
+          ]
+        },
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "INFO:     Started server process [24531]\n",
+            "INFO:     Waiting for application startup.\n",
+            "INFO:     Application startup complete.\n",
+            "INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)\n"
+          ]
+        },
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "==============================\n",
+            "TUNNEL PASSWORD: 104.154.151.132\n",
+            "==============================\n",
+            "your url is: https://violet-apes-beam.loca.lt\n",
+            "INFO:     149.40.209.14:0 - \"GET /favicon.ico HTTP/1.1\" 404 Not Found\n",
+            "INFO:     149.40.209.14:0 - \"GET / HTTP/1.1\" 200 OK\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Welcome To Colab",
+      "toc_visible": true,
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
